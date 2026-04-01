@@ -7,10 +7,9 @@ class Address(BaseModel):
     pincode: int
 
 
-class User(BaseModel):
+class Product(BaseModel):
     id: int
     name: str = Field(min_length=3)
-    age: int = Field(gt=0)
     price: float = Field(gt=0)
-    address: Address = Field(min_length=3)
-    hobbies: Optional[List[str]] = None
+    address: Address
+    products: Optional[List[str]] = None
