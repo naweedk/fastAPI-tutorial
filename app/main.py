@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from app.routes import product
+from app.schemas.user_schema import User
 
 app = FastAPI()
 
@@ -25,3 +26,8 @@ def get_items(item_id: int, discount: float = None):
    return {"item_id": item_id, "discount": discount}
 
 app.include_router(product.router)
+
+@app.post("/user")
+def create_user(user: User):
+    return {"data": user}
+   
