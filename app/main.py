@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from app.routes import product
 
 app = FastAPI()
 
@@ -22,3 +23,5 @@ def search(q: str):
 @app.get("/items/{item_id}")
 def get_items(item_id: int, discount: float = None):
    return {"item_id": item_id, "discount": discount}
+
+app.include_router(product.router)
